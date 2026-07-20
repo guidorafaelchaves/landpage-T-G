@@ -17,6 +17,6 @@ npm run build
 
 ## Deploy
 
-Cada push para a branch `main` executa o build e publica a pasta `dist/` no GitHub Pages.
+Cada push para a branch `main` publica a pasta `dist/` no GitHub Pages, sem instalar dependências no runner.
 
-O repositório mantém apenas o código-fonte. As dependências (`node_modules/`) e o build (`dist/`) são gerados automaticamente e não devem ser versionados.
+Ao alterar o código-fonte, execute `npm run build` e inclua a pasta `dist/` atualizada no commit. As dependências (`node_modules/`) não devem ser versionadas.
