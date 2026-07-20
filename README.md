@@ -1,18 +1,18 @@
 # T&G Innovations — Landing Page Cinematográfica
 
-Landing page institucional em React + Vite, com Three.js, GSAP ScrollTrigger, Lenis e Framer Motion.
+Landing page em React + Vite com Three.js, GSAP ScrollTrigger, Lenis e Framer Motion.
 
-## Desenvolvimento local
+## Rodar localmente
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build de produção
+## Gerar produção
 
 ```bash
 npm run build
 ```
 
-O GitHub Actions publica automaticamente a pasta `dist` no GitHub Pages a cada atualização da branch `main`.
+A pasta `dist/` pode ser publicada no GitHub Pages, Cloudflare Pages ou Netlify.
