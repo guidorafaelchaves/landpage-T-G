@@ -1,6 +1,6 @@
 # T&G Innovations — Landing Page Cinematográfica
 
-Landing page em React + Vite com Three.js, GSAP ScrollTrigger, Lenis e Framer Motion.
+Landing page institucional em React + Vite com conteúdo progressivo, Three.js, GSAP ScrollTrigger e Lenis.
 
 ## Rodar localmente
 
@@ -17,6 +17,8 @@ npm run build
 
 ## Deploy
 
-Cada push para a branch `main` publica a pasta `dist/` no GitHub Pages, sem instalar dependências no runner.
+Cada push para a branch `main` instala as dependências, gera o build e publica a pasta `dist/` no GitHub Pages.
 
-Ao alterar o código-fonte, execute `npm run build` e inclua a pasta `dist/` atualizada no commit. As dependências (`node_modules/`) não devem ser versionadas.
+As dependências (`node_modules/`) e o build (`dist/`) são gerados automaticamente e não devem ser versionados.
+
+O relatório técnico de desempenho e validação está em [`PERFORMANCE.md`](./PERFORMANCE.md).
