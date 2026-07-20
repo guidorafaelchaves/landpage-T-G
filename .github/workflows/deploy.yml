@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 permissions:
@@ -21,35 +20,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout do repositorio
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
-      - name: Install dependencies
+      - name: Instalar dependencias
         run: npm ci --include=dev
 
-      - name: Debug environment
-        run: |
-          node -v
-          npm -v
-          pwd
-          ls -la
-          ls -la node_modules
-          ls -la node_modules/.bin
-          cat package.json
+      - name: Gerar build do Vite
+        run: node ./node_modules/vite/bin/vite.js build
 
-      - name: Build
-        run: npx vite build
-
-      - name: Configure Pages
+      - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Enviar arquivos compilados
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
@@ -63,6 +52,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Deploy
+      - name: Publicar no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
