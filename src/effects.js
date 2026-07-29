@@ -1,4 +1,3 @@
-import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -7,7 +6,6 @@ gsap.registerPlugin(ScrollTrigger)
 export function startExperience() {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
-  const desktop = window.matchMedia('(min-width: 901px)').matches
   const cleanups = []
 
   document.documentElement.classList.add('experience-ready')
@@ -15,17 +13,6 @@ export function startExperience() {
   if (reduceMotion) {
     document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'))
     return () => document.documentElement.classList.remove('experience-ready')
-  }
-
-  const lenis = desktop ? new Lenis({ duration: 1, smoothWheel: true, wheelMultiplier: 0.9 }) : null
-  let rafId = 0
-  if (lenis) {
-    const raf = (time) => {
-      lenis.raf(time)
-      rafId = requestAnimationFrame(raf)
-    }
-    rafId = requestAnimationFrame(raf)
-    lenis.on('scroll', ScrollTrigger.update)
   }
 
   const context = gsap.context(() => {
@@ -107,11 +94,16 @@ export function startExperience() {
       cursorX += (targetX - cursorX) * 0.16
       cursorY += (targetY - cursorY) * 0.16
       if (cursor) cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`
-      cursorRaf = requestAnimationFrame(renderCursor)
+      if (Math.abs(targetX - cursorX) > 0.1 || Math.abs(targetY - cursorY) > 0.1) {
+        cursorRaf = requestAnimationFrame(renderCursor)
+      } else {
+        cursorRaf = 0
+      }
     }
     const move = (event) => {
       targetX = event.clientX
       targetY = event.clientY
+      if (!cursorRaf) cursorRaf = requestAnimationFrame(renderCursor)
     }
     const enter = (event) => {
       if (!cursor) return
@@ -125,7 +117,6 @@ export function startExperience() {
       element.addEventListener('pointerenter', enter)
       element.addEventListener('pointerleave', leave)
     })
-    renderCursor()
     cleanups.push(() => {
       cancelAnimationFrame(cursorRaf)
       window.removeEventListener('pointermove', move)
@@ -167,8 +158,6 @@ export function startExperience() {
   document.addEventListener('click', routeHandler)
 
   return () => {
-    cancelAnimationFrame(rafId)
-    lenis?.destroy()
     context.revert()
     cleanups.forEach((cleanup) => cleanup())
     document.removeEventListener('click', routeHandler)

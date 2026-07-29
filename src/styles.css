@@ -585,7 +585,7 @@ h3 {
 .city-journey {
   --journey-progress: 0;
   position: relative;
-  height: 550vh;
+  height: 420vh;
   background: #080a0e;
 }
 
@@ -2311,7 +2311,7 @@ h3 {
   .orbit-a { width: 90vw; height: 90vw; right: -50vw; }
   .orbit-b { width: 65vw; height: 65vw; right: -25vw; }
 
-  .city-journey { height: 460vh; }
+  .city-journey { height: 380vh; }
   .city-sticky { min-height: 620px; }
   .city-interface { padding-top: 105px; }
   .city-heading h2 { max-width: 320px; font-size: 2.7rem; }

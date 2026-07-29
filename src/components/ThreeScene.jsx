@@ -240,7 +240,8 @@ export default function ThreeScene() {
     let pointerX = 0
     let pointerY = 0
     let raf = 0
-    let running = !document.hidden
+    let inViewport = false
+    let running = false
     const clock = new THREE.Clock()
     const target = new THREE.Vector3(0, 0.4, 0)
 
@@ -297,23 +298,29 @@ export default function ThreeScene() {
       camera.updateProjectionMatrix()
       renderer.setSize(mount.clientWidth, mount.clientHeight)
     }
-    const onVisibility = () => {
-      running = !document.hidden
+    const updateRunning = () => {
+      running = !document.hidden && inViewport
       if (running) {
         clock.start()
         cancelAnimationFrame(raf)
         render()
       } else cancelAnimationFrame(raf)
     }
+    const onVisibility = () => updateRunning()
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      inViewport = entry.isIntersecting
+      updateRunning()
+    }, { threshold: 0.01 })
 
     window.addEventListener('tg:city-progress', onJourney)
     window.addEventListener('pointermove', onPointer, { passive: true })
     window.addEventListener('resize', onResize, { passive: true })
     document.addEventListener('visibilitychange', onVisibility)
-    render()
+    visibilityObserver.observe(mount)
 
     return () => {
       cancelAnimationFrame(raf)
+      visibilityObserver.disconnect()
       window.removeEventListener('tg:city-progress', onJourney)
       window.removeEventListener('pointermove', onPointer)
       window.removeEventListener('resize', onResize)

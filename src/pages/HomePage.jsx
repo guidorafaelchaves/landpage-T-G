@@ -28,9 +28,28 @@ function useProgressiveScene() {
       }
     })()
     if (reduced || !hasWebGL) return undefined
-    const callback = () => setShow(true)
-    const id = window.requestIdleCallback ? window.requestIdleCallback(callback, { timeout: 900 }) : window.setTimeout(callback, 350)
-    return () => window.cancelIdleCallback ? window.cancelIdleCallback(id) : window.clearTimeout(id)
+    const city = document.querySelector('.city-journey')
+    if (!city) return undefined
+
+    let idleId = 0
+    const loadScene = () => {
+      const callback = () => setShow(true)
+      idleId = window.requestIdleCallback
+        ? window.requestIdleCallback(callback, { timeout: 600 })
+        : window.setTimeout(callback, 120)
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      observer.disconnect()
+      loadScene()
+    }, { rootMargin: '0px 0px -15% 0px' })
+
+    observer.observe(city)
+    return () => {
+      observer.disconnect()
+      if (window.cancelIdleCallback) window.cancelIdleCallback(idleId)
+      else window.clearTimeout(idleId)
+    }
   }, [])
   return show
 }
