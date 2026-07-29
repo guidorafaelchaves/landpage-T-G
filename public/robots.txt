@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guidorafaelchaves.github.io/landpage-T-G/sitemap.xml
