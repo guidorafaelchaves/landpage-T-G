@@ -3,9 +3,9 @@ import SiteHeader from '../components/layout/SiteHeader.jsx'
 import SiteFooter from '../components/layout/SiteFooter.jsx'
 import AnimatedTitle from '../components/ui/AnimatedTitle.jsx'
 import { businessUnits, ecosystemMetrics, partnerTypes } from '../content/site.js'
+import { siteBase as base } from '../siteBase.js'
 
 const ThreeScene = lazy(() => import('../components/ThreeScene.jsx'))
-const base = import.meta.env.BASE_URL
 
 const chapters = [
   ['00', 'Visão geral', 'Uma cidade onde infraestrutura, energia e movimento compartilham a mesma inteligência.'],

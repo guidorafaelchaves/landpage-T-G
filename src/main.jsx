@@ -5,11 +5,12 @@ import ServicePage from './pages/ServicePage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import { servicePages } from './content/site.js'
+import { siteBase } from './siteBase.js'
 import '@fontsource-variable/inter/wght.css'
 import '@fontsource-variable/space-grotesk/wght.css'
 import './styles.css'
 
-const basePath = import.meta.env.BASE_URL.replace(/^\/|\/$/g, '')
+const basePath = siteBase.replace(/^\/|\/$/g, '')
 const route = window.location.pathname
   .split('/')
   .filter(Boolean)

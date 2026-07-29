@@ -1,4 +1,4 @@
-const base = import.meta.env.BASE_URL
+import { siteBase as base } from '../../siteBase.js'
 
 export default function SiteFooter() {
   return (

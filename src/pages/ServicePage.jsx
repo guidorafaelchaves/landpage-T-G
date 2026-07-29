@@ -4,8 +4,7 @@ import SiteFooter from '../components/layout/SiteFooter.jsx'
 import AnimatedTitle from '../components/ui/AnimatedTitle.jsx'
 import ContactForm from '../components/ui/ContactForm.jsx'
 import { businessUnits } from '../content/site.js'
-
-const base = import.meta.env.BASE_URL
+import { siteBase as base } from '../siteBase.js'
 
 function StructuredData({ page, slug }) {
   useEffect(() => {

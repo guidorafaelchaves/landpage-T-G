@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-
-const base = import.meta.env.BASE_URL
+import { siteBase as base } from '../../siteBase.js'
 
 export default function SiteHeader({ current = 'home' }) {
   const [open, setOpen] = useState(false)

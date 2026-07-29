@@ -2,8 +2,7 @@ import SiteHeader from '../components/layout/SiteHeader.jsx'
 import SiteFooter from '../components/layout/SiteFooter.jsx'
 import AnimatedTitle from '../components/ui/AnimatedTitle.jsx'
 import ContactForm from '../components/ui/ContactForm.jsx'
-
-const base = import.meta.env.BASE_URL
+import { siteBase as base } from '../siteBase.js'
 
 export default function ContactPage() {
   return (
