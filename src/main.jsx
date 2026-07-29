@@ -10,11 +10,8 @@ import '@fontsource-variable/inter/wght.css'
 import '@fontsource-variable/space-grotesk/wght.css'
 import './styles.css'
 
-const basePath = siteBase.replace(/^\/|\/$/g, '')
-const route = window.location.pathname
-  .split('/')
-  .filter(Boolean)
-  .filter((segment) => segment !== basePath)[0] || 'home'
+const basePath = new URL(siteBase, window.location.origin).pathname
+const route = window.location.pathname.slice(basePath.length).split('/').filter(Boolean)[0] || 'home'
 
 function App() {
   useEffect(() => {
