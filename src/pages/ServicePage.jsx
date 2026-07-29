@@ -20,7 +20,7 @@ function StructuredData({ page, slug }) {
       provider: {
         '@type': 'Organization',
         name: 'T&G Innovations',
-        url: 'https://guidorafaelchaves.github.io/landpage-T-G/',
+        url: 'https://tg.log.br/',
       },
       areaServed: {
         '@type': 'City',

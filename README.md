@@ -31,4 +31,6 @@ O build gera oito entradas HTML dentro de `dist/`, além de `robots.txt` e `site
 
 Cada push para `main` executa o build e publica `dist/` no GitHub Pages. `node_modules/` e `dist/` não são versionados.
 
+Produção: [https://tg.log.br](https://tg.log.br)
+
 O relatório técnico está em [`PERFORMANCE.md`](./PERFORMANCE.md).
