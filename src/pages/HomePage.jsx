@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react'
 import SiteHeader from '../components/layout/SiteHeader.jsx'
 import SiteFooter from '../components/layout/SiteFooter.jsx'
 import AnimatedTitle from '../components/ui/AnimatedTitle.jsx'
+import ContactForm from '../components/ui/ContactForm.jsx'
 import { businessUnits, ecosystemMetrics, partnerTypes } from '../content/site.js'
 import { siteBase as base } from '../siteBase.js'
 
@@ -72,12 +73,18 @@ export default function HomePage() {
           <div className="hero-orbit orbit-a" data-depth="0.2" aria-hidden="true" />
           <div className="hero-orbit orbit-b" data-depth="0.12" aria-hidden="true" />
           <div className="hero-content">
-            <p className="kicker"><span /> Tecnologia aplicada à infraestrutura real</p>
-            <AnimatedTitle>Movemos o que vem depois.</AnimatedTitle>
-            <p className="hero-lead">Logística inteligente, mobilidade elétrica, energia limpa e infraestrutura de recarga conectadas em um único ecossistema.</p>
+            <p className="kicker"><span /> Atendimento empresarial em Arapiraca e região</p>
+            <AnimatedTitle>Logística, mobilidade elétrica e energia para sua empresa</AnimatedTitle>
+            <p className="hero-lead">Soluções para armazenagem, entregas, veículos elétricos, carregamento e geração solar.</p>
             <div className="hero-actions">
-              <a className="button button-primary magnetic" href="#cidade"><span>Explorar ecossistema</span><i aria-hidden="true">↓</i></a>
-              <a className="button button-ghost magnetic" href={`${base}contato/`} data-route><span>Falar com a T&G</span><i aria-hidden="true">↗</i></a>
+              <a className="button button-primary magnetic" href={`${base}solicitar-proposta/`} data-route><span>Solicitar proposta</span><i aria-hidden="true">↗</i></a>
+              <a className="button button-ghost magnetic" href={`${base}empresa/contato/`} data-route><span>Falar com a T&amp;G</span><i aria-hidden="true">↗</i></a>
+            </div>
+            <div className="hero-proofs" aria-label="Diferenciais de atendimento">
+              <span>Atendimento empresarial</span>
+              <span>Projetos personalizados</span>
+              <span>Venda, instalação e suporte</span>
+              <span>Operação em Arapiraca e região</span>
             </div>
           </div>
           <div className="hero-index" aria-hidden="true">
@@ -125,7 +132,7 @@ export default function HomePage() {
         <section className="business-ecosystem section-space" id="ecossistema">
           <div className="section-heading reveal">
             <div><span className="section-number">02 — ECOSSISTEMA</span><p className="kicker"><span /> Frentes de negócio</p></div>
-            <h2>Um sistema de soluções que ganha valor quando trabalha junto.</h2>
+            <h2>O que a T&amp;G oferece</h2>
           </div>
           <div className="business-grid">
             {businessUnits.map((unit) => (
@@ -133,6 +140,31 @@ export default function HomePage() {
                 <div className="business-top"><span>{unit.number}</span><i aria-hidden="true">↗</i></div>
                 <div className={`business-symbol symbol-${unit.scene}`} aria-hidden="true"><span /><span /><span /></div>
                 <div><small>{unit.short}</small><h3>{unit.label}</h3><p>{unit.description}</p></div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="profile-solutions section-space">
+          <div className="section-heading reveal">
+            <div><span className="section-number">03 — POR PERFIL</span><p className="kicker"><span /> Encontre seu caminho</p></div>
+            <h2>Qual solução você procura?</h2>
+          </div>
+          <div className="profile-grid">
+            {[
+              ['Empresas', 'para-empresas'],
+              ['Entregadores', 'para-entregadores'],
+              ['Lojistas', 'para-lojistas'],
+              ['Comércio eletrônico', 'para-ecommerce'],
+              ['Condomínios', 'para-condominios'],
+              ['Restaurantes', 'para-restaurantes'],
+              ['Hotéis', 'para-hoteis'],
+              ['Transportadoras', 'para-transportadoras'],
+            ].map(([label, slug], index) => (
+              <a className="profile-card reveal" href={`${base}solucoes/${slug}/`} data-route key={slug}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{label}</strong>
+                <i aria-hidden="true">↗</i>
               </a>
             ))}
           </div>
@@ -150,26 +182,32 @@ export default function HomePage() {
             <small>SIMULAÇÃO OPERACIONAL / 01</small>
           </div>
           <div className="feature-copy reveal">
-            <span className="section-number">03 — LOGÍSTICA</span>
+            <span className="section-number">04 — T&amp;G HUB</span>
             <p className="kicker"><span /> T&G Hub</p>
-            <h2>Uma extensão da sua operação em Arapiraca.</h2>
-            <p>Recebimento, conferência, armazenagem temporária, cross docking, fulfillment sob projeto e expedição regional.</p>
+            <h2>Estrutura logística em Arapiraca</h2>
+            <p>A T&amp;G Hub oferece apoio para empresas que precisam receber, armazenar, separar, retirar ou distribuir mercadorias na região.</p>
             <ul className="feature-list">
-              <li><span>01</span> Menor investimento inicial</li>
-              <li><span>02</span> Expansão progressiva</li>
-              <li><span>03</span> Operação regional conectada</li>
+              <li><span>01</span> Espaço de armazenagem</li>
+              <li><span>02</span> Apoio a transportadoras</li>
+              <li><span>03</span> Ponto de retirada e preparação de pedidos</li>
+              <li><span>04</span> Distribuição urbana e atendimento de parceiros</li>
             </ul>
-            <a className="text-link" href={`${base}logistica/`} data-route>Conhecer logística <i>↗</i></a>
+            <a className="text-link" href={`${base}tg-hub-arapiraca/apresentar-operacao/`} data-route>Apresentar minha operação <i>↗</i></a>
           </div>
         </section>
 
         <section className="mobility-feature section-space">
           <div className="mobility-copy reveal">
-            <span className="section-number">04 — MOBILIDADE</span>
+            <span className="section-number">05 — MOBILIDADE</span>
             <p className="kicker"><span /> T&G E-Bikes</p>
-            <h2>Mais cidade por carga.</h2>
-            <p>Bicicletas elétricas, soluções para empresas e entregadores, peças, acessórios e um ecossistema de suporte em desenvolvimento.</p>
-            <a className="button button-light magnetic" href={`${base}e-bikes/`} data-route><span>Explorar mobilidade</span><i>↗</i></a>
+            <h2>Veículos elétricos para trabalho</h2>
+            <p>Soluções para entregadores, comércios, condomínios e empresas que buscam reduzir despesas de deslocamento e operação.</p>
+            <ul className="feature-list">
+              <li><span>01</span> Bicicletas elétricas e modelos de carga</li>
+              <li><span>02</span> Acessórios, baterias e peças</li>
+              <li><span>03</span> Manutenção e propostas para frotas</li>
+            </ul>
+            <a className="button button-light magnetic" href={`${base}veiculos-eletricos/solicitar-cotacao/`} data-route><span>Solicitar cotação</span><i>↗</i></a>
           </div>
           <div className="bike-kinetic reveal" aria-label="Representação abstrata de uma bicicleta elétrica em movimento">
             <div className="bike-wheel wheel-left" /><div className="bike-wheel wheel-right" />
@@ -182,24 +220,24 @@ export default function HomePage() {
         <section className="energy-feature section-space">
           <div className="energy-sky" aria-hidden="true"><i /><i /><i /></div>
           <div className="energy-copy reveal">
-            <span className="section-number">05 — ENERGIA</span>
+            <span className="section-number">06 — ENERGIA E RECARGA</span>
             <p className="kicker"><span /> Sol + infraestrutura</p>
-            <h2>A cidade também pode produzir o que consome.</h2>
-            <p>Projetos solares e recarga veicular pensados como partes da mesma transição energética.</p>
+            <h2>Reduza sua conta de energia</h2>
+            <p>Projetos solares calculados conforme o consumo e a estrutura do imóvel. Envie sua conta de energia para receber uma análise inicial.</p>
           </div>
           <div className="energy-paths">
-            <a href={`${base}energia-solar/`} data-route className="energy-path reveal">
-              <span>01</span><strong>Energia solar</strong><p>Residências, empresas e microgeração.</p><i>↗</i>
+            <a href={`${base}energia-solar/simulacao/`} data-route className="energy-path reveal">
+              <span>01</span><strong>Simular projeto solar</strong><p>Análise inicial a partir do consumo e do imóvel.</p><i>↗</i>
             </a>
             <a href={`${base}carregadores/`} data-route className="energy-path reveal">
-              <span>02</span><strong>Infraestrutura de recarga</strong><p>Wallbox, totens, condomínios e frotas.</p><i>↗</i>
+              <span>02</span><strong>Carregamento elétrico para empresas e condomínios</strong><p>Avaliação elétrica, fornecimento, instalação, sinalização, manutenção e integração solar.</p><i>↗</i>
             </a>
           </div>
         </section>
 
         <section className="metrics section-space">
           <div className="section-heading reveal">
-            <div><span className="section-number">06 — PLATAFORMA</span><p className="kicker"><span /> Estrutura em evolução</p></div>
+            <div><span className="section-number">07 — PLATAFORMA</span><p className="kicker"><span /> Estrutura em evolução</p></div>
             <h2>Construída para conectar operações e abrir novas possibilidades.</h2>
           </div>
           <div className="metrics-grid">
@@ -209,20 +247,22 @@ export default function HomePage() {
         </section>
 
         <section className="partners section-space">
-          <div className="partners-heading reveal"><span className="section-number">07 — CONEXÕES</span><h2>Feita para quem move a economia real.</h2></div>
+          <div className="partners-heading reveal"><span className="section-number">08 — CONEXÕES</span><h2>Parcerias para ampliar operações e atendimento regional.</h2></div>
           <div className="partner-marquee" aria-label="Públicos conectados ao ecossistema">
             <div>{[...partnerTypes, ...partnerTypes].map((partner, index) => <span key={`${partner}-${index}`}>{partner}<i>✦</i></span>)}</div>
           </div>
         </section>
 
-        <section className="final-cta section-space">
+        <section className="contact-section gradient-contact section-space" id="contato">
           <div className="cta-glow" aria-hidden="true" />
-          <div className="final-cta-copy reveal">
-            <p className="kicker"><span /> Próximo movimento</p>
-            <h2>O futuro precisa de um lugar para começar.</h2>
-            <p>Em Arapiraca, a T&amp;G está construindo esse lugar.</p>
-            <a className="button button-primary magnetic" href={`${base}contato/`} data-route><span>Construir uma parceria</span><i>↗</i></a>
+          <div className="contact-copy reveal">
+            <span className="section-number">09 — CONTATO</span>
+            <p className="kicker"><span /> Próximo passo</p>
+            <h2>Qual solução sua empresa precisa?</h2>
+            <p>Informe sua necessidade e a equipe da T&amp;G entrará em contato.</p>
+            <a className="text-link" href={`${base}solicitar-proposta/`} data-route>Solicitar atendimento <i aria-hidden="true">↗</i></a>
           </div>
+          <ContactForm compact intent="Serviço logístico" />
         </section>
       </main>
       <SiteFooter />

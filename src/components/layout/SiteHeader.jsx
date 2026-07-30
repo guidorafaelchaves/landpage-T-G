@@ -34,14 +34,17 @@ export default function SiteHeader({ current = 'home' }) {
         </button>
         <div id="primary-navigation" className={`nav-panel ${open ? 'is-open' : ''}`}>
           <div className="nav-links">
+            <a className={current === 'home' ? 'is-current' : ''} href={base} data-route onClick={() => setOpen(false)}>Início</a>
             <a className={current === 'logistica' ? 'is-current' : ''} href={`${base}logistica/`} data-route onClick={() => setOpen(false)}>Logística</a>
-            <a className={current === 'e-bikes' ? 'is-current' : ''} href={`${base}e-bikes/`} data-route onClick={() => setOpen(false)}>E-Bikes</a>
-            <a className={current === 'energia-solar' ? 'is-current' : ''} href={`${base}energia-solar/`} data-route onClick={() => setOpen(false)}>Energia</a>
-            <a className={current === 'carregadores' ? 'is-current' : ''} href={`${base}carregadores/`} data-route onClick={() => setOpen(false)}>Recarga</a>
-            <a className={current === 'sobre' ? 'is-current' : ''} href={`${base}sobre/`} data-route onClick={() => setOpen(false)}>Sobre</a>
+            <a className={current === 'veiculos-eletricos' ? 'is-current' : ''} href={`${base}veiculos-eletricos/`} data-route onClick={() => setOpen(false)}>Veículos elétricos</a>
+            <a className={current === 'energia-solar' ? 'is-current' : ''} href={`${base}energia-solar/`} data-route onClick={() => setOpen(false)}>Energia solar</a>
+            <a className={current === 'carregadores' ? 'is-current' : ''} href={`${base}carregadores/`} data-route onClick={() => setOpen(false)}>Carregadores</a>
+            <a className={current === 'tg-hub-arapiraca' ? 'is-current' : ''} href={`${base}tg-hub-arapiraca/`} data-route onClick={() => setOpen(false)}>T&amp;G Hub</a>
+            <a className={current === 'parcerias' ? 'is-current' : ''} href={`${base}parcerias/`} data-route onClick={() => setOpen(false)}>Parcerias</a>
+            <a className={current === 'empresa' ? 'is-current' : ''} href={`${base}empresa/contato/`} data-route onClick={() => setOpen(false)}>Contato</a>
           </div>
-          <a className="nav-contact magnetic" href={`${base}contato/`} data-route onClick={() => setOpen(false)}>
-            <span>Iniciar conversa</span>
+          <a className="nav-contact magnetic" href={`${base}solicitar-proposta/`} data-route onClick={() => setOpen(false)}>
+            <span>Solicitar proposta</span>
             <i aria-hidden="true">↗</i>
           </a>
           <small>Arapiraca · Alagoas · Brasil</small>
